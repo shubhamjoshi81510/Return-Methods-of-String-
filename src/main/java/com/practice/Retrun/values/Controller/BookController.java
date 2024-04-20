@@ -19,9 +19,6 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-    @Autowired
-    private Book book;
-
 
 
 
@@ -44,8 +41,7 @@ public class BookController {
 
     @GetMapping("/get2/{id}")
     public ResponseEntity<Book> getBookById(@PathVariable String bookId) {
-
-
+        Book book = new Book();
         if (bookService.getBookById(bookId) == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
